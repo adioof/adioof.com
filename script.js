@@ -16,6 +16,8 @@
         isReady: false,
         mouseX: 0,
         mouseY: 0,
+        scrollVelocity: 0,
+        prevScrollTarget: 0,
     };
 
     const $ = (sel) => document.querySelector(sel);
@@ -88,7 +90,13 @@
 
     function updateSmoothScroll() {
         if (prefersReducedMotion || state.isMobile) return;
-        state.scrollCurrent += (state.scrollTarget - state.scrollCurrent) * 0.12;
+        // Track velocity for momentum
+        const prevTarget = state.prevScrollTarget || state.scrollTarget;
+        state.scrollVelocity = Math.abs(state.scrollTarget - prevTarget);
+        state.prevScrollTarget = state.scrollTarget;
+        // Dynamic lerp: slower at high velocity = overshoot feeling
+        const lerpFactor = state.scrollVelocity > 50 ? 0.07 : 0.12;
+        state.scrollCurrent += (state.scrollTarget - state.scrollCurrent) * lerpFactor;
         if (Math.abs(state.scrollTarget - state.scrollCurrent) < 0.5) {
             state.scrollCurrent = state.scrollTarget;
         }
@@ -250,10 +258,12 @@
             J.snapping = false;
             clearTimeout(J.userScrollTimeout);
             clearTimeout(J.snapTimeout);
+            // Dynamic: fast scroll gets more coast time
+            const coastTime = Math.max(80, 250 - (state.scrollVelocity || 0));
             J.userScrollTimeout = setTimeout(() => {
                 J.userScrolling = false;
                 snapToNearest();
-            }, 100);
+            }, coastTime);
         };
         window.addEventListener('wheel', markScrolling, { passive: true });
         window.addEventListener('touchmove', markScrolling, { passive: true });
@@ -287,13 +297,66 @@
                 const x = (e.clientX - r.left) / r.width - 0.5;
                 const y = (e.clientY - r.top) / r.height - 0.5;
                 inner.style.transform = `perspective(600px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale(1.03)`;
-                // Animated border glow follows mouse
                 inner.style.setProperty('--glow-x', `${(x + 0.5) * 100}%`);
                 inner.style.setProperty('--glow-y', `${(y + 0.5) * 100}%`);
             });
             card.addEventListener('mouseleave', () => {
                 inner.style.transform = '';
             });
+        });
+
+        // --- Drag to scroll ---
+        const sticky = dom.journey.querySelector('.journey-sticky');
+        let isDragging = false, dragStartX = 0, dragStartScroll = 0;
+
+        sticky.addEventListener('mousedown', (e) => {
+            if (e.target.closest('a, button, .journey-card')) return;
+            isDragging = true;
+            dragStartX = e.clientX;
+            dragStartScroll = window.scrollY;
+            sticky.classList.add('dragging');
+            e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const delta = dragStartX - e.clientX;
+            const jRect = getOffsetRect(dom.journey);
+            const maxStick = jRect.height - window.innerHeight;
+            const numP = dom.journeyTrack.children.length;
+            const scrollPerPixel = maxStick / (window.innerWidth * (numP - 1));
+            window.scrollTo({ top: dragStartScroll + delta * scrollPerPixel * 2.5 });
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                sticky.classList.remove('dragging');
+                setTimeout(() => snapToNearest(), 50);
+            }
+        });
+
+        // --- Keyboard navigation ---
+        window.addEventListener('keydown', (e) => {
+            if (state.isMobile) return;
+            const jRect = getOffsetRect(dom.journey);
+            const scrolled = window.scrollY - jRect.top;
+            const maxStick = jRect.height - window.innerHeight;
+            if (scrolled < -100 || scrolled > maxStick + 100) return;
+
+            const numP = dom.journeyTrack.children.length;
+            const current = Math.round((scrolled / maxStick) * (numP - 1));
+            let target = current;
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') target = Math.min(numP - 1, current + 1);
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') target = Math.max(0, current - 1);
+            else return;
+
+            e.preventDefault();
+            const targetScroll = jRect.top + (target / (numP - 1)) * maxStick;
+            J.snapping = true;
+            window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+            setTimeout(() => { J.snapping = false; }, 800);
         });
     }
 
@@ -495,54 +558,79 @@
         J.scrollVelocity = progress - J.prevProgress;
         J.prevProgress = progress;
 
-        // Progress bar + glow
+        // Progress bar
         if (dom.journeyProgress) {
             dom.journeyProgress.style.width = `${progress * 100}%`;
             const glow = $('#journeyProgressGlow');
             if (glow) glow.style.left = `calc(${progress * 100}% - 40px)`;
         }
 
+        // Connector line — draw as you scroll
+        const connLine = $('#connectorLine');
+        if (connLine) {
+            connLine.style.strokeDashoffset = 1000 * (1 - progress);
+        }
+        // Connector dots
+        $$('.journey-connector-dot').forEach((dot) => {
+            const pi = parseInt(dot.dataset.panel);
+            const dotProgress = pi / (numPanels - 1);
+            dot.classList.toggle('active', progress >= dotProgress - 0.02);
+        });
+
+        // Continuous gradient morphing
+        const glowEl = $('#journeyGlow');
+        if (glowEl) {
+            const pi = Math.min(numPanels - 2, Math.floor(progress * (numPanels - 1)));
+            const ni = pi + 1;
+            const t = progress * (numPanels - 1) - pi;
+            const col = lerpColor(COLORS[pi], COLORS[ni], t);
+            glowEl.style.background = `
+                radial-gradient(ellipse 40% 50% at 25% 50%, rgba(${col.r|0}, ${col.g|0}, ${col.b|0}, 0.1) 0%, transparent 70%),
+                radial-gradient(ellipse 30% 40% at 75% 60%, rgba(${col.r|0}, ${col.g|0}, ${col.b|0}, 0.05) 0%, transparent 60%)
+            `;
+        }
+
         // Active panel
         const panelProgress = progress * (numPanels - 1);
         const activeIndex = Math.min(numPanels - 1, Math.round(panelProgress));
 
-        // Per-panel continuous progress (0 = entering, 1 = centered, going to next)
+        // Per-panel: 3D depth parallax + content animations
         Array.from(panels).forEach((panel, i) => {
-            const localP = panelProgress - i; // -1 to 1 when centered at 0
+            const localP = panelProgress - i;
             const absP = Math.abs(localP);
 
-            // Scale + blur inactive panels
             const scale = 1 - absP * 0.04;
-            const opacity = Math.max(0.3, 1 - absP * 0.5);
 
-            // Mouse parallax on content
+            // 3D depth layers — year deepest, content mid, card foreground
             const content = panel.querySelector('.journey-content');
             const visual = panel.querySelector('.journey-visual');
-            if (content && i === activeIndex) {
+            const year = panel.querySelector('.journey-year');
+
+            if (i === activeIndex) {
                 const mx = (state.mouseX / window.innerWidth - 0.5) * 12;
                 const my = (state.mouseY / window.innerHeight - 0.5) * 8;
-                content.style.transform = `translate(${mx}px, ${my}px)`;
-                if (visual) visual.style.transform = `translate(${mx * -0.5}px, ${my * -0.5}px) scale(1)`;
-            } else if (content) {
-                content.style.transform = '';
-                if (visual) visual.style.transform = `scale(${scale}) translateY(${absP * 20}px)`;
+                if (content) content.style.transform = `translate(${mx}px, ${my}px) translateX(${localP * -15}px) translateZ(0px)`;
+                if (visual) visual.style.transform = `translate(${mx * -0.5}px, ${my * -0.5}px) translateX(${localP * 15}px) translateZ(30px) scale(1)`;
+            } else {
+                if (content) content.style.transform = `translateX(${localP * -15}px) translateZ(0px)`;
+                if (visual) visual.style.transform = `translateX(${localP * 15}px) translateZ(30px) scale(${scale}) translateY(${absP * 20}px)`;
             }
 
-            // Year parallax
-            const year = panel.querySelector('.journey-year');
+            // Year — deepest layer, fastest parallax
             if (year) {
-                const offset = localP * 80;
+                const offset = localP * 120;
                 const yearScale = i === activeIndex ? 1 : 0.85;
                 const yearOpacity = i === activeIndex ? 0.05 : 0.02;
-                year.style.transform = `translate(calc(-50% + ${offset}px), -50%) scale(${yearScale})`;
+                year.style.transform = `translate(calc(-50% + ${offset}px), -50%) scale(${yearScale}) translateZ(-50px)`;
                 year.style.opacity = yearOpacity;
             }
 
-            // Fade non-active panels
+            // Fade non-active elements
             const tag = panel.querySelector('.journey-tag');
             const desc = panel.querySelector('.journey-desc');
-            const stat = panel.querySelector('.journey-stat');
-            [tag, desc, stat].forEach(el => {
+            const stats = panel.querySelector('.journey-stats');
+            const quote = panel.querySelector('.journey-quote');
+            [tag, desc, stats].forEach(el => {
                 if (!el) return;
                 if (i === activeIndex) {
                     el.style.opacity = '1';
@@ -556,7 +644,6 @@
 
         // Panel change triggers
         if (activeIndex !== J.activePanel) {
-            const prev = J.activePanel;
             J.activePanel = activeIndex;
 
             // Active class
@@ -565,27 +652,19 @@
             // Dots
             $$('.journey-dot').forEach((d, i) => d.classList.toggle('active', i === activeIndex));
 
-            // Background glow with smooth transition
-            const glowEl = $('#journeyGlow');
-            if (glowEl) {
-                const c = COLORS[activeIndex];
-                glowEl.style.background = `
-                    radial-gradient(ellipse 40% 50% at 25% 50%, rgba(${c.r}, ${c.g}, ${c.b}, 0.1) 0%, transparent 70%),
-                    radial-gradient(ellipse 30% 40% at 75% 60%, rgba(${c.r}, ${c.g}, ${c.b}, 0.05) 0%, transparent 60%)
-                `;
-            }
-
             // Show title chars
             J.titleChars.forEach((chars, i) => {
                 if (!chars) return;
                 chars.forEach(s => { s.style.opacity = i === activeIndex ? '1' : '0.3'; });
             });
 
-            // Digit roll on stat
-            const statEl = panels[activeIndex].querySelector('.journey-stat-number');
-            if (statEl && !J.countedUp.has(activeIndex)) {
+            // Digit roll on stacked stats
+            const statEls = panels[activeIndex].querySelectorAll('.journey-stat-number');
+            if (statEls.length && !J.countedUp.has(activeIndex)) {
                 J.countedUp.add(activeIndex);
-                setTimeout(() => digitRoll(statEl), 300);
+                statEls.forEach((el, i) => {
+                    setTimeout(() => digitRoll(el), 300 + i * 250);
+                });
             }
 
             // Animate card bar fills

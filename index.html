@@ -129,24 +129,56 @@
                     <!-- Background glow that transitions per panel -->
                     <div class="journey-glow" id="journeyGlow"></div>
 
+                    <!-- Timeline connector line -->
+                    <div class="journey-connector" id="journeyConnector">
+                        <svg class="journey-connector-svg" preserveAspectRatio="none" viewBox="0 0 1000 20">
+                            <line class="journey-connector-bg" x1="0" y1="10" x2="1000" y2="10"/>
+                            <line class="journey-connector-line" id="connectorLine" x1="0" y1="10" x2="1000" y2="10"/>
+                            <circle class="journey-connector-dot" cx="125" cy="10" r="6" data-panel="0"/>
+                            <circle class="journey-connector-dot" cx="375" cy="10" r="6" data-panel="1"/>
+                            <circle class="journey-connector-dot" cx="625" cy="10" r="6" data-panel="2"/>
+                            <circle class="journey-connector-dot" cx="875" cy="10" r="6" data-panel="3"/>
+                        </svg>
+                    </div>
+
                     <div class="journey-track" id="journeyTrack">
-                        <!-- PANEL 1 -->
+                        <!-- PANEL 1: BITS -->
                         <div class="journey-panel" data-accent="#6366f1" data-index="0">
+                            <div class="journey-panel-bg" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
                             <span class="journey-year">2020</span>
                             <div class="journey-content">
                                 <div class="journey-tag" style="--accent: #6366f1;">BITS Pilani, 2019-23</div>
                                 <h2 class="journey-title">College, but make it productive</h2>
-                                <p class="journey-desc">5 internships. Founded x3ntech, shipped 5+ apps — Neo Vault hit 250K downloads. BITSAT 320. Lights &amp; sound head for the fashion club. CEL associate. Volleyball. Minor in Finance.</p>
-                                <div class="journey-stat">
-                                    <span class="journey-stat-number" data-target="5" data-suffix="">0</span>
-                                    <span class="journey-stat-label">internships</span>
+                                <p class="journey-quote">5 internships. 250K downloads. No sleep.</p>
+                                <p class="journey-desc">Founded x3ntech, shipped 5+ apps — Neo Vault hit 250K downloads. BITSAT 320. Lights &amp; sound head for the fashion club. CEL associate. Volleyball. Minor in Finance.</p>
+                                <div class="journey-stats">
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="5" data-suffix="">0</span>
+                                        <span class="journey-stat-label">internships</span>
+                                    </div>
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="250" data-suffix="K">0</span>
+                                        <span class="journey-stat-label">downloads</span>
+                                    </div>
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="5" data-suffix="+">0</span>
+                                        <span class="journey-stat-label">apps shipped</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="journey-visual">
                                 <div class="journey-card">
                                     <div class="journey-card-inner">
                                         <div class="journey-card-icon">
-                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                                <path d="M56 28v16M8 28L32 16l24 12-24 12z"/>
+                                                <path d="M18 34v12c0 2.5 6.3 5 14 5s14-2.5 14-5V34">
+                                                    <animate attributeName="d" values="M18 34v0c0 2.5 6.3 5 14 5s14-2.5 14-5V34;M18 34v12c0 2.5 6.3 5 14 5s14-2.5 14-5V34" dur="1s" fill="freeze" begin="0.3s"/>
+                                                </path>
+                                                <circle cx="56" cy="44" r="2" fill="currentColor" opacity="0">
+                                                    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+                                                </circle>
+                                            </svg>
                                         </div>
                                         <div class="journey-card-stat">250K</div>
                                         <div class="journey-card-label">App Downloads (Organic)</div>
@@ -160,23 +192,35 @@
                             </div>
                         </div>
 
-                        <!-- PANEL 2 -->
+                        <!-- PANEL 2: Hcare -->
                         <div class="journey-panel" data-accent="#8b5cf6" data-index="1">
+                            <div class="journey-panel-bg" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d1b4e 50%, #1b1b2f 100%);"></div>
                             <span class="journey-year">2021</span>
                             <div class="journey-content">
                                 <div class="journey-tag" style="--accent: #8b5cf6;">CTO at 20</div>
                                 <h2 class="journey-title">Built a health platform from scratch</h2>
-                                <p class="journey-desc">Hcare -- online homeopathy consultancy. Designed the app, built the backend, scaled to 20K+ users. First time owning every technical decision.</p>
-                                <div class="journey-stat">
-                                    <span class="journey-stat-number" data-target="20" data-suffix="K+">0</span>
-                                    <span class="journey-stat-label">users</span>
+                                <p class="journey-quote">First time owning every decision.</p>
+                                <p class="journey-desc">Hcare -- online homeopathy consultancy. Designed the app, built the backend, scaled to 20K+ users across platforms.</p>
+                                <div class="journey-stats">
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="20" data-suffix="K+">0</span>
+                                        <span class="journey-stat-label">users</span>
+                                    </div>
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="1" data-suffix="">0</span>
+                                        <span class="journey-stat-label">man army</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="journey-visual">
                                 <div class="journey-card">
                                     <div class="journey-card-inner">
                                         <div class="journey-card-icon">
-                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path class="heartbeat-line" d="M4 32h14l6 18 8-36 6 18h22" stroke-dasharray="200" stroke-dashoffset="200">
+                                                    <animate attributeName="stroke-dashoffset" from="200" to="0" dur="1.5s" fill="freeze" begin="0.2s"/>
+                                                </path>
+                                            </svg>
                                         </div>
                                         <div class="journey-card-stat">20K+</div>
                                         <div class="journey-card-label">Active Users</div>
@@ -190,23 +234,48 @@
                             </div>
                         </div>
 
-                        <!-- PANEL 3 -->
+                        <!-- PANEL 3: Wishlink -->
                         <div class="journey-panel" data-accent="#06b6d4" data-index="2">
+                            <div class="journey-panel-bg" style="background: linear-gradient(135deg, #0a0a0a 0%, #0d2137 50%, #0a1628 100%);"></div>
                             <span class="journey-year">2023</span>
                             <div class="journey-content">
                                 <div class="journey-tag" style="--accent: #06b6d4;">Wishlink</div>
                                 <h2 class="journey-title">Joined at seed, built the product</h2>
+                                <p class="journey-quote">Turned down the safe bet.</p>
                                 <p class="journey-desc">Turned down a ~66 LPA offer to join Wishlink at $3M seed instead. Built the creator commerce platform end-to-end for two years. Top 1% bracket at the company. They went on to raise a $17.5M Series B after I left.</p>
-                                <div class="journey-stat">
-                                    <span class="journey-stat-number" data-target="40" data-suffix="K+">0</span>
-                                    <span class="journey-stat-label">creators on platform</span>
+                                <div class="journey-stats">
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="40" data-suffix="K+">0</span>
+                                        <span class="journey-stat-label">creators</span>
+                                    </div>
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="17" data-suffix=".5M">0</span>
+                                        <span class="journey-stat-label">Series B</span>
+                                    </div>
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="1" data-suffix="%">0</span>
+                                        <span class="journey-stat-label">top bracket</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="journey-visual">
                                 <div class="journey-card">
                                     <div class="journey-card-inner">
                                         <div class="journey-card-icon">
-                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                                <rect x="8" y="44" width="12" height="0" rx="2" fill="currentColor" opacity="0.3">
+                                                    <animate attributeName="height" from="0" to="12" dur="0.6s" fill="freeze" begin="0.2s"/>
+                                                    <animate attributeName="y" from="44" to="32" dur="0.6s" fill="freeze" begin="0.2s"/>
+                                                </rect>
+                                                <rect x="26" y="44" width="12" height="0" rx="2" fill="currentColor" opacity="0.5">
+                                                    <animate attributeName="height" from="0" to="24" dur="0.6s" fill="freeze" begin="0.5s"/>
+                                                    <animate attributeName="y" from="44" to="20" dur="0.6s" fill="freeze" begin="0.5s"/>
+                                                </rect>
+                                                <rect x="44" y="44" width="12" height="0" rx="2" fill="currentColor" opacity="0.8">
+                                                    <animate attributeName="height" from="0" to="36" dur="0.6s" fill="freeze" begin="0.8s"/>
+                                                    <animate attributeName="y" from="44" to="8" dur="0.6s" fill="freeze" begin="0.8s"/>
+                                                </rect>
+                                            </svg>
                                         </div>
                                         <div class="journey-card-stat">$17.5M</div>
                                         <div class="journey-card-label">Series B Raised</div>
@@ -220,23 +289,40 @@
                             </div>
                         </div>
 
-                        <!-- PANEL 4 -->
+                        <!-- PANEL 4: Sydney -->
                         <div class="journey-panel" data-accent="#ec4899" data-index="3">
+                            <div class="journey-panel-bg" style="background: linear-gradient(135deg, #1a0a1e 0%, #2d0a2e 50%, #1a0a1e 100%);"></div>
                             <span class="journey-year">2025</span>
                             <div class="journey-content">
                                 <div class="journey-tag" style="--accent: #ec4899;">Sydney, AU</div>
                                 <h2 class="journey-title">Moved to Sydney at 24</h2>
+                                <p class="journey-quote">New city. New country. Same hunger.</p>
                                 <p class="journey-desc">Packed up and moved to Sydney. 5x pay jump. Founding engineer at Coreflow AI -- one of the fastest growing AI startups, 20M+ users.</p>
-                                <div class="journey-stat">
-                                    <span class="journey-stat-number" data-target="20" data-suffix="M+">0</span>
-                                    <span class="journey-stat-label">users</span>
+                                <div class="journey-stats">
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="20" data-suffix="M+">0</span>
+                                        <span class="journey-stat-label">users</span>
+                                    </div>
+                                    <div class="journey-stat journey-stat--mini">
+                                        <span class="journey-stat-number" data-target="5" data-suffix="x">0</span>
+                                        <span class="journey-stat-label">pay jump</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="journey-visual">
                                 <div class="journey-card">
                                     <div class="journey-card-inner">
                                         <div class="journey-card-icon">
-                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                                <circle cx="32" cy="32" r="26"/>
+                                                <ellipse cx="32" cy="32" rx="10" ry="26">
+                                                    <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="20s" repeatCount="indefinite"/>
+                                                </ellipse>
+                                                <line x1="6" y1="32" x2="58" y2="32"/>
+                                                <ellipse cx="32" cy="32" rx="18" ry="26" opacity="0.3">
+                                                    <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="-360 32 32" dur="30s" repeatCount="indefinite"/>
+                                                </ellipse>
+                                            </svg>
                                         </div>
                                         <div class="journey-card-stat">20M+</div>
                                         <div class="journey-card-label">Users on Platform</div>
