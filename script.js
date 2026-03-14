@@ -360,6 +360,7 @@
     }
 
     function lerpColor(c1, c2, t) {
+        if (!c1 || !c2) return c1 || c2 || { r: 99, g: 102, b: 241 };
         return {
             r: c1.r + (c2.r - c1.r) * t,
             g: c1.g + (c2.g - c1.g) * t,
@@ -579,9 +580,9 @@
         // Continuous gradient morphing
         const glowEl = $('#journeyGlow');
         if (glowEl) {
-            const pi = Math.min(numPanels - 2, Math.floor(progress * (numPanels - 1)));
-            const ni = pi + 1;
-            const t = progress * (numPanels - 1) - pi;
+            const pi = Math.min(COLORS.length - 2, Math.floor(progress * (COLORS.length - 1)));
+            const ni = Math.min(COLORS.length - 1, pi + 1);
+            const t = Math.max(0, Math.min(1, progress * (COLORS.length - 1) - pi));
             const col = lerpColor(COLORS[pi], COLORS[ni], t);
             glowEl.style.background = `
                 radial-gradient(ellipse 40% 50% at 25% 50%, rgba(${col.r|0}, ${col.g|0}, ${col.b|0}, 0.1) 0%, transparent 70%),
@@ -591,7 +592,7 @@
 
         // Active panel
         const panelProgress = progress * (numPanels - 1);
-        const activeIndex = Math.min(numPanels - 1, Math.round(panelProgress));
+        const activeIndex = Math.max(0, Math.min(numPanels - 1, Math.round(panelProgress)));
 
         // Per-panel: 3D depth parallax + content animations
         Array.from(panels).forEach((panel, i) => {
