@@ -389,7 +389,7 @@ body.smooth-scroll .scroll-content {
 /* --- Panel backgrounds --- */
 .journey-panel-bg {
     position: absolute;
-    inset: -20px;
+    inset: -40px;
     z-index: 0;
     opacity: 0.5;
     background-size: cover;
@@ -397,6 +397,8 @@ body.smooth-scroll .scroll-content {
     filter: brightness(0.35);
     transition: opacity 0.8s ease, filter 0.8s ease;
     pointer-events: none;
+    transform: scale(1);
+    will-change: transform, opacity;
 }
 
 .journey-panel.active .journey-panel-bg {
@@ -442,16 +444,32 @@ body.smooth-scroll .scroll-content {
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
 }
 
+/* --- Staggered entrance --- */
+.journey-tag,
+.journey-quote,
+.journey-desc,
+.journey-stats {
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journey-panel.active .journey-tag { transition-delay: 0s; }
+.journey-panel.active .journey-quote { transition-delay: 0.12s; }
+.journey-panel.active .journey-desc { transition-delay: 0.2s; }
+.journey-panel.active .journey-stats { transition-delay: 0.32s; }
+.journey-panel.active .journey-visual { transition-delay: 0.15s; }
+
 /* --- Quote --- */
 .journey-quote {
     font-size: clamp(14px, 1.2vw, 16px);
     font-weight: 400;
     font-style: italic;
-    color: rgba(232, 232, 232, 0.3);
+    color: rgba(232, 232, 232, 0.35);
     margin-bottom: 16px;
     opacity: 0;
     transform: translateY(8px);
-    transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+    min-height: 1.4em;
+    overflow: hidden;
+    transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
 }
 
 .journey-panel.active .journey-quote {

@@ -605,6 +605,7 @@
             const content = panel.querySelector('.journey-content');
             const visual = panel.querySelector('.journey-visual');
             const year = panel.querySelector('.journey-year');
+            const bg = panel.querySelector('.journey-panel-bg');
 
             if (i === activeIndex) {
                 const mx = (state.mouseX / window.innerWidth - 0.5) * 12;
@@ -616,6 +617,14 @@
                 if (visual) visual.style.transform = `translateX(${localP * 15}px) translateZ(30px) scale(${scale}) translateY(${absP * 20}px)`;
             }
 
+            // Background image parallax — shifts opposite to scroll
+            if (bg) {
+                const parallaxX = localP * 30;
+                bg.style.transform = i === activeIndex
+                    ? `scale(1.08) translateX(${parallaxX}px)`
+                    : `scale(1) translateX(${parallaxX}px)`;
+            }
+
             // Year — deepest layer, fastest parallax
             if (year) {
                 const offset = localP * 120;
@@ -625,11 +634,10 @@
                 year.style.opacity = yearOpacity;
             }
 
-            // Fade non-active elements
+            // Staggered fade — each element offsets via CSS transition-delay
             const tag = panel.querySelector('.journey-tag');
             const desc = panel.querySelector('.journey-desc');
             const stats = panel.querySelector('.journey-stats');
-            const quote = panel.querySelector('.journey-quote');
             [tag, desc, stats].forEach(el => {
                 if (!el) return;
                 if (i === activeIndex) {
@@ -657,6 +665,24 @@
                 if (!chars) return;
                 chars.forEach(s => { s.style.opacity = i === activeIndex ? '1' : '0.3'; });
             });
+
+            // Typewriter on quote
+            const activeQuote = panels[activeIndex].querySelector('.journey-quote');
+            if (activeQuote && !activeQuote.dataset.typed) {
+                activeQuote.dataset.typed = '1';
+                const fullText = activeQuote.textContent;
+                activeQuote.textContent = '';
+                activeQuote.style.opacity = '1';
+                let ci = 0;
+                function typeChar() {
+                    if (ci < fullText.length) {
+                        activeQuote.textContent += fullText[ci];
+                        ci++;
+                        setTimeout(typeChar, 28);
+                    }
+                }
+                setTimeout(typeChar, 200);
+            }
 
             // Digit roll on stacked stats
             const statEls = panels[activeIndex].querySelectorAll('.journey-stat-number');
