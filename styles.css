@@ -1083,6 +1083,11 @@ body.smooth-scroll .scroll-content {
     margin-bottom: 16px;
 }
 
+.linkedin-highlight {
+    color: #fff;
+    font-weight: 500;
+}
+
 .linkedin-link {
     font-size: 14px;
     font-weight: 500;
