@@ -1,0 +1,1503 @@
+/* ============================================
+   ADIOOF.COM — Immersive Personal Experience
+   ============================================ */
+
+/* --- Variables --- */
+:root {
+    --bg: #050505;
+    --text: #e8e8e8;
+    --text-dim: #555;
+    --accent: #6366f1;
+    --font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', sans-serif;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* When smooth scroll is active, body provides the scrollbar height */
+body.smooth-scroll {
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: #fff;
+}
+
+/* --- Scroll Wrapper (lerp-based smooth scroll) --- */
+.scroll-wrapper {
+    /* Default: normal flow for mobile / reduced motion */
+}
+
+body.smooth-scroll .scroll-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body.smooth-scroll .scroll-content {
+    will-change: transform;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30, 20, 60, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 30% 60%, rgba(20, 10, 50, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 70% 30%, rgba(40, 20, 80, 0.3) 0%, transparent 50%);
+    animation: gradientShift 12s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0% {
+        background:
+            radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30, 20, 60, 0.6) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 50% at 30% 60%, rgba(20, 10, 50, 0.4) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 40% at 70% 30%, rgba(40, 20, 80, 0.3) 0%, transparent 50%);
+    }
+    50% {
+        background:
+            radial-gradient(ellipse 70% 70% at 55% 35%, rgba(25, 15, 70, 0.5) 0%, transparent 65%),
+            radial-gradient(ellipse 50% 60% at 40% 55%, rgba(30, 15, 55, 0.45) 0%, transparent 55%),
+            radial-gradient(ellipse 60% 35% at 60% 40%, rgba(35, 25, 75, 0.35) 0%, transparent 55%);
+    }
+    100% {
+        background:
+            radial-gradient(ellipse 85% 55% at 45% 45%, rgba(35, 25, 55, 0.55) 0%, transparent 70%),
+            radial-gradient(ellipse 55% 45% at 35% 50%, rgba(25, 20, 60, 0.35) 0%, transparent 60%),
+            radial-gradient(ellipse 45% 50% at 65% 35%, rgba(30, 15, 70, 0.4) 0%, transparent 50%);
+    }
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    padding: 0 8vw;
+    max-width: 1400px;
+}
+
+.hero-top {
+    font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 400;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 3vh;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: heroReveal 0.8s ease 0.3s forwards;
+}
+
+.hero-statement {
+    font-size: clamp(36px, 6vw, 100px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroReveal 1s ease 0.5s forwards;
+}
+
+.hero-strike {
+    color: var(--text-dim);
+    font-size: 0.45em;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+    position: relative;
+    top: -0.05em;
+}
+
+.hero-sub {
+    font-size: clamp(14px, 1.4vw, 20px);
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-top: 4vh;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: heroReveal 0.8s ease 0.9s forwards;
+}
+
+@keyframes heroReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll line indicator */
+.scroll-line {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInLine 1s 1.5s forwards;
+}
+
+.scroll-line-inner {
+    width: 100%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+    0% { transform: translateY(-30px); }
+    100% { transform: translateY(60px); }
+}
+
+@keyframes fadeInLine {
+    to { opacity: 1; }
+}
+
+/* ============================================
+   INTRO — Word-by-word reveal
+   ============================================ */
+.intro {
+    min-height: 150vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10vh 8vw;
+    position: relative;
+}
+
+.intro-inner {
+    max-width: 1000px;
+}
+
+.intro-text {
+    font-size: clamp(28px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.intro-word {
+    display: inline-block;
+    opacity: 0.08;
+    transition: opacity 0.3s ease;
+    margin-right: 0.25em;
+}
+
+.intro-word.revealed {
+    opacity: 1;
+}
+
+.intro-break {
+    display: block;
+    margin-top: 0.4em;
+}
+
+/* Override: intro-break still needs inline-block behavior for reveal but block for line break */
+.intro-break::before {
+    content: '';
+    display: block;
+}
+
+/* ============================================
+   JOURNEY — Horizontal scroll (immersive)
+   ============================================ */
+.journey {
+    height: 500vh;
+    position: relative;
+}
+
+.journey-sticky {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #030308;
+}
+
+/* Noise texture overlay */
+.journey-sticky::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px;
+}
+
+.journey-track {
+    display: flex;
+    height: 100%;
+    will-change: transform;
+}
+
+/* --- Particles canvas --- */
+.journey-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- Background glow per panel --- */
+.journey-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: background 0.8s ease;
+    background: radial-gradient(ellipse 50% 60% at 30% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+}
+
+/* --- Progress bar --- */
+.journey-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.04);
+    z-index: 20;
+}
+
+.journey-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4, #ec4899);
+}
+
+.journey-progress-glow {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 80px;
+    height: 11px;
+    border-radius: 50%;
+    filter: blur(6px);
+    background: #fff;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* --- Navigation dots --- */
+.journey-dots {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 32px;
+    z-index: 20;
+}
+
+.journey-dot {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 0;
+    position: relative;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-family: var(--font);
+    transition: color 0.4s ease;
+}
+
+.journey-dot::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 0 auto 8px;
+    transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.journey-dot.active {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.journey-dot.active::before {
+    background: #fff;
+    transform: scale(1.4);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.journey-dot.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: dotPulse 2s ease-out infinite;
+}
+
+@keyframes dotPulse {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+    100% { transform: translateX(-50%) scale(2.5); opacity: 0; }
+}
+
+/* --- Panels --- */
+.journey-panel {
+    min-width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    position: relative;
+    padding: 0 10vw;
+    overflow: hidden;
+}
+
+/* Vertical divider between panels */
+.journey-panel::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.06), transparent);
+}
+
+.journey-panel:last-child::after { display: none; }
+
+.journey-year {
+    position: absolute;
+    font-size: clamp(200px, 25vw, 400px);
+    font-weight: 900;
+    opacity: 0;
+    color: var(--text);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.journey-year {
+    /* opacity and transform driven by JS now */
+    transition: none;
+    will-change: transform, opacity;
+}
+
+/* --- Content --- */
+.journey-content {
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+    flex-shrink: 0;
+    will-change: transform;
+    transition: transform 0.15s ease-out;
+}
+
+/* Tag, desc, stat — driven by JS for continuous scroll-linked transitions */
+.journey-tag,
+.journey-desc,
+.journey-stat {
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* --- Character-level title animation --- */
+.j-word {
+    white-space: nowrap;
+    display: inline;
+}
+
+.j-char {
+    display: inline;
+    transition: opacity 0.05s ease;
+    will-change: opacity;
+}
+
+.journey-title {
+    /* Always visible — individual chars handle opacity */
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.journey-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.journey-title {
+    font-size: clamp(28px, 3.2vw, 48px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+.journey-desc {
+    font-size: clamp(15px, 1.3vw, 17px);
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(232, 232, 232, 0.5);
+    margin-bottom: 32px;
+}
+
+.journey-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.journey-stat-number {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.journey-stat-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* --- Visual card (right side) --- */
+.journey-visual {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    will-change: transform;
+    transition: transform 0.2s ease-out, opacity 0.4s ease;
+}
+
+.journey-card {
+    width: 340px;
+    perspective: 800px;
+    position: relative;
+}
+
+/* Animated border gradient */
+.journey-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 21px;
+    padding: 1px;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 40%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 60%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderRotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.journey-panel.active .journey-card::before {
+    opacity: 1;
+}
+
+@keyframes borderRotate {
+    to { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+/* Mouse-following inner glow */
+.journey-card-inner {
+    background:
+        radial-gradient(
+            circle 200px at var(--glow-x, 50%) var(--glow-y, 50%),
+            rgba(255, 255, 255, 0.04) 0%,
+            transparent 100%
+        ),
+        rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 36px 32px;
+    backdrop-filter: blur(20px);
+    transition: transform 0.2s ease, border-color 0.4s ease;
+    will-change: transform;
+}
+
+.journey-panel.active .journey-card-inner {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.journey-card-icon {
+    color: rgba(255, 255, 255, 0.25);
+    margin-bottom: 24px;
+}
+
+.journey-card-stat {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+}
+
+.journey-card-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+}
+
+.journey-card-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.journey-card-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 2px;
+    background: var(--accent, #6366f1);
+    transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--accent, #6366f1) 40%, transparent);
+}
+
+.journey-card-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.02em;
+}
+
+/* ============================================
+   PROJECTS — Stacked showcases
+   ============================================ */
+.projects {
+    padding: 15vh 0;
+    position: relative;
+}
+
+.projects-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8vw;
+}
+
+.project-showcase {
+    position: relative;
+    padding: 10vh 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.project-showcase:last-child {
+    border-bottom: none;
+}
+
+.project-bg-accent {
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 140%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.project-showcase:hover .project-bg-accent {
+    opacity: 1;
+}
+
+.project-showcase[data-color="#6366f1"] .project-bg-accent {
+    background: radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.06) 0%, transparent 60%);
+}
+
+.project-showcase[data-color="#8b5cf6"] .project-bg-accent {
+    background: radial-gradient(ellipse at 30% 50%, rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+}
+
+.project-showcase[data-color="#06b6d4"] .project-bg-accent {
+    background: radial-gradient(ellipse at 30% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 60%);
+}
+
+.project-info {
+    position: relative;
+    z-index: 1;
+}
+
+.project-name {
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-showcase:hover .project-name {
+    transform: translateX(20px);
+}
+
+.project-line {
+    font-size: clamp(16px, 1.5vw, 22px);
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(232, 232, 232, 0.6);
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.project-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.project-meta span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.project-preview {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+}
+
+.project-preview-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.12);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: border-color 0.4s ease;
+}
+
+.project-showcase:hover .project-preview-placeholder {
+    border-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* ============================================
+   PERSONAL — The Other Side
+   ============================================ */
+.personal {
+    padding: 15vh 0;
+    position: relative;
+}
+
+.personal-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 8vw;
+}
+
+.personal-heading {
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 8vh;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.personal-heading.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.personal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.personal-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px 32px;
+    transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.personal-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.personal-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.personal-item--large {
+    grid-row: span 2;
+}
+
+.personal-item--wide {
+    grid-column: span 2;
+}
+
+.personal-emoji {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.personal-item h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.personal-item p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(232, 232, 232, 0.5);
+}
+
+/* ============================================
+   INSTAGRAM GRID
+   ============================================ */
+.insta-section {
+    padding: 10vh 0 15vh;
+    position: relative;
+}
+
+.insta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8vw;
+}
+
+.insta-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 6vh;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.insta-header.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.insta-heading {
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--text);
+}
+
+.insta-sub {
+    font-size: clamp(15px, 1.3vw, 17px);
+    font-weight: 300;
+    color: rgba(232, 232, 232, 0.5);
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.insta-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    transition: color 0.3s ease;
+}
+
+.insta-link:hover {
+    color: var(--accent);
+}
+
+.insta-embed-single {
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.insta-embed-single.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.insta-embed-single iframe {
+    display: block;
+    width: 100%;
+    height: 600px;
+    border: none;
+    background: #000;
+}
+
+/* ============================================
+   LINKEDIN
+   ============================================ */
+.linkedin-section {
+    padding: 10vh 0 15vh;
+    position: relative;
+}
+
+.linkedin-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8vw;
+}
+
+.linkedin-header {
+    margin-bottom: 5vh;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.linkedin-header.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.linkedin-heading {
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.linkedin-sub {
+    font-size: clamp(15px, 1.3vw, 17px);
+    font-weight: 300;
+    color: rgba(232, 232, 232, 0.5);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.linkedin-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    transition: color 0.3s ease;
+}
+
+.linkedin-link:hover {
+    color: #0a66c2;
+}
+
+.linkedin-posts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.linkedin-post {
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.4s ease;
+}
+
+.linkedin-post.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.linkedin-post:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.linkedin-post iframe {
+    display: block;
+    width: 100%;
+    height: 280px;
+    border: none;
+}
+
+/* ============================================
+   WRITING — Editorial
+   ============================================ */
+.writing {
+    padding: 12vh 0;
+    position: relative;
+}
+
+.writing-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 8vw;
+}
+
+.writing-heading {
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6vh;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.writing-heading.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.writing-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.writing-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: padding-left 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.writing-link.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.writing-link:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.writing-link:hover {
+    padding-left: 20px;
+}
+
+.writing-link-title {
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+.writing-link:hover .writing-link-title {
+    color: var(--accent);
+}
+
+.writing-link-arrow {
+    font-size: 28px;
+    color: var(--text-dim);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.writing-link:hover .writing-link-arrow {
+    transform: translateX(8px);
+    color: var(--accent);
+}
+
+/* ============================================
+   CONTACT — Closing
+   ============================================ */
+.contact {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 50% 50% at 50% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.contact-inner {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 8vw;
+}
+
+.contact-heading {
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 4vh;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.contact-heading.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-email {
+    display: inline-block;
+    font-size: clamp(18px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--text);
+    padding: 12px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 6vh;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s, border-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-email.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-email:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 4vh;
+    flex-wrap: wrap;
+}
+
+.contact-social {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    transition: color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.contact-social.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-social:hover {
+    color: var(--text);
+    transform: translateY(-2px);
+}
+
+.contact-social svg {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.contact-social:hover svg {
+    opacity: 1;
+}
+
+.contact-location {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.6s ease 0.5s;
+}
+
+.contact-location.revealed {
+    opacity: 0.5;
+}
+
+/* ============================================
+   RESPONSIVE — Tablet
+   ============================================ */
+@media (max-width: 768px) {
+    /* Hero */
+    .hero-inner {
+        padding: 0 6vw;
+    }
+
+    .hero-statement {
+        font-size: clamp(28px, 8vw, 48px);
+    }
+
+    .hero-strike {
+        font-size: 0.4em;
+        display: inline;
+    }
+
+    .hero-sub {
+        font-size: clamp(12px, 3.2vw, 16px);
+    }
+
+    /* Intro */
+    .intro {
+        padding: 10vh 6vw;
+        min-height: 120vh;
+    }
+
+    .intro-text {
+        font-size: clamp(22px, 5vw, 32px);
+    }
+
+    /* Journey — vertical stack on mobile */
+    .journey {
+        height: auto;
+    }
+
+    .journey-sticky {
+        height: auto;
+        overflow: visible;
+        background: transparent;
+    }
+
+    .journey-track {
+        flex-direction: column;
+    }
+
+    .journey-panel {
+        min-width: 100%;
+        height: auto;
+        min-height: auto;
+        padding: 8vh 6vw;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .journey-panel .journey-tag,
+    .journey-panel .journey-title,
+    .journey-panel .journey-desc,
+    .journey-panel .journey-stat,
+    .journey-panel .journey-visual {
+        opacity: 1;
+        transform: none;
+    }
+
+    .journey-panel .journey-year {
+        opacity: 0.03;
+        transform: translate(-50%, -50%);
+        font-size: 100px;
+    }
+
+    .journey-particles,
+    .journey-dots,
+    .journey-progress,
+    .journey-glow {
+        display: none;
+    }
+
+    .journey-card {
+        width: 100%;
+    }
+
+    .journey-card-inner {
+        padding: 28px 24px;
+    }
+
+    .journey-card-stat {
+        font-size: 32px;
+    }
+
+    .journey-panel::after { display: none; }
+
+    .journey-card-bar-fill {
+        width: var(--fill, 50%) !important;
+    }
+
+    .journey-title {
+        font-size: clamp(22px, 5.5vw, 32px);
+    }
+
+    .journey-stat-number {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+    /* Projects */
+    .project-showcase {
+        flex-direction: column;
+        gap: 24px;
+        padding: 6vh 0;
+    }
+
+    .project-preview {
+        width: 100%;
+        height: 180px;
+    }
+
+    .project-name {
+        font-size: clamp(28px, 8vw, 48px);
+    }
+
+    .project-line {
+        font-size: 15px;
+    }
+
+    /* Personal */
+    .personal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .personal-item--large {
+        grid-row: span 1;
+    }
+
+    .personal-item--wide {
+        grid-column: span 1;
+    }
+
+    .personal-item {
+        padding: 28px 24px;
+    }
+
+    /* LinkedIn */
+    .linkedin-posts {
+        grid-template-columns: 1fr;
+    }
+
+    /* Instagram */
+    .insta-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .insta-embed-single iframe {
+        height: 500px;
+    }
+
+    /* Writing */
+    .writing-link {
+        padding: 24px 0;
+    }
+
+    .writing-link-title {
+        font-size: clamp(16px, 4.5vw, 24px);
+    }
+
+    .writing-link-arrow {
+        font-size: 20px;
+    }
+
+    /* Contact */
+    .contact {
+        min-height: 80vh;
+    }
+
+    .contact-heading {
+        font-size: clamp(40px, 14vw, 80px);
+    }
+
+    .contact-email {
+        font-size: clamp(14px, 4vw, 20px);
+        word-break: break-all;
+    }
+
+    .contact-socials {
+        gap: 16px;
+    }
+
+    .contact-social span {
+        display: none;
+    }
+
+    .contact-social svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE — Small phones
+   ============================================ */
+@media (max-width: 480px) {
+    .hero-statement {
+        font-size: clamp(24px, 7.5vw, 36px);
+    }
+
+    .hero-top {
+        font-size: 12px;
+    }
+
+    .hero-sub {
+        font-size: 13px;
+    }
+
+    .intro-text {
+        font-size: clamp(20px, 5.5vw, 28px);
+    }
+
+    .journey-panel {
+        padding: 6vh 5vw;
+    }
+
+    .journey-card-inner {
+        padding: 24px 20px;
+    }
+
+    .projects-inner {
+        padding: 0 5vw;
+    }
+
+    .personal-inner {
+        padding: 0 5vw;
+    }
+
+    .writing-inner {
+        padding: 0 5vw;
+    }
+
+    .contact-inner {
+        padding: 0 5vw;
+    }
+}
+
+/* ============================================
+   Prefers reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .scroll-wrapper {
+        position: static;
+        overflow: visible;
+    }
+
+    .scroll-content {
+        transform: none !important;
+    }
+
+    body.smooth-scroll {
+        position: static;
+        overflow: auto;
+    }
+
+    .hero-top,
+    .hero-statement,
+    .hero-sub,
+    .intro-word,
+    .journey-tag,
+    .journey-title,
+    .journey-desc,
+    .journey-stat,
+    .journey-visual,
+    .personal-heading,
+    .personal-item,
+    .writing-heading,
+    .writing-link,
+    .contact-heading,
+    .contact-email,
+    .insta-header,
+    .insta-embed-single,
+    .linkedin-header,
+    .linkedin-post,
+    .contact-social,
+    .contact-location {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

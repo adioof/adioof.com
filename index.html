@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Agarwal — Engineer, Founder, Creator</title>
+    <meta name="description" content="Aditya Agarwal is a software engineer and founder building at the intersection of entertainment and AI. Currently founding engineer at Coreflow AI, Sydney.">
+    <meta name="keywords" content="Aditya Agarwal, Software Engineer, Coreflow AI, Full Stack Developer, Founder, Sydney">
+    <meta name="author" content="Aditya Agarwal">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Aditya Agarwal — Engineer, Founder, Creator">
+    <meta property="og:description" content="Building at the intersection of entertainment and AI. Founding engineer at Coreflow AI, Sydney.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adioof.com">
+    <meta property="og:site_name" content="Aditya Agarwal">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aditya Agarwal — Engineer, Founder, Creator">
+    <meta name="twitter:description" content="Building at the intersection of entertainment and AI.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://adioof.com">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aditya Agarwal",
+        "url": "https://adioof.com",
+        "email": "adityaagarwal990@gmail.com",
+        "jobTitle": "Software Engineer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Coreflow AI"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "BITS Pilani"
+        },
+        "sameAs": [
+            "https://linkedin.com/in/adioof",
+            "https://github.com/adityaagarwal16",
+            "https://instagram.com/adioof",
+            "https://dev.to/adioof"
+        ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Smooth scroll wrapper -->
+    <div class="scroll-wrapper" id="scrollWrapper">
+        <div class="scroll-content" id="scrollContent">
+
+            <!-- ============ HERO ============ -->
+            <section class="hero" id="hero">
+                <div class="hero-gradient"></div>
+                <div class="hero-inner">
+                    <p class="hero-top" id="heroTop">Aditya Agarwal</p>
+                    <h1 class="hero-statement" id="heroStatement">Full-stack <span class="hero-strike">(AI&nbsp;&#x3e;&#x3c;)</span> engineer. Founder. Builder.</h1>
+                    <p class="hero-sub" id="heroSub">Sydney, AU — Founding Engineer at Coreflow AI</p>
+                </div>
+                <div class="scroll-line" id="scrollLine">
+                    <div class="scroll-line-inner"></div>
+                </div>
+            </section>
+
+            <!-- ============ INTRO ============ -->
+            <section class="intro" id="intro">
+                <div class="intro-inner">
+                    <p class="intro-text" id="introText">
+                        <span class="intro-word">Full-stack</span>
+                        <span class="intro-word">engineer.</span>
+                        <span class="intro-word">Built</span>
+                        <span class="intro-word">apps</span>
+                        <span class="intro-word">people</span>
+                        <span class="intro-word">actually</span>
+                        <span class="intro-word">downloaded,</span>
+                        <span class="intro-word">joined</span>
+                        <span class="intro-word">a</span>
+                        <span class="intro-word">startup</span>
+                        <span class="intro-word">at</span>
+                        <span class="intro-word">seed,</span>
+                        <span class="intro-word">shipped</span>
+                        <span class="intro-word">product</span>
+                        <span class="intro-word">for</span>
+                        <span class="intro-word">two</span>
+                        <span class="intro-word">years.</span>
+                        <span class="intro-word intro-break">Now</span>
+                        <span class="intro-word">in</span>
+                        <span class="intro-word">Sydney,</span>
+                        <span class="intro-word">building</span>
+                        <span class="intro-word">AI</span>
+                        <span class="intro-word">at</span>
+                        <span class="intro-word">Coreflow.</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- ============ JOURNEY — HORIZONTAL SCROLL ============ -->
+            <section class="journey" id="journey">
+                <div class="journey-sticky">
+                    <!-- Progress bar -->
+                    <div class="journey-progress">
+                        <div class="journey-progress-fill" id="journeyProgress"></div>
+                        <div class="journey-progress-glow" id="journeyProgressGlow"></div>
+                    </div>
+
+                    <!-- Floating particles canvas -->
+                    <canvas class="journey-particles" id="journeyParticles"></canvas>
+
+                    <!-- Panel indicator dots -->
+                    <div class="journey-dots" id="journeyDots">
+                        <button class="journey-dot active" data-panel="0"><span>2020</span></button>
+                        <button class="journey-dot" data-panel="1"><span>2021</span></button>
+                        <button class="journey-dot" data-panel="2"><span>2023</span></button>
+                        <button class="journey-dot" data-panel="3"><span>2025</span></button>
+                    </div>
+
+                    <!-- Background glow that transitions per panel -->
+                    <div class="journey-glow" id="journeyGlow"></div>
+
+                    <div class="journey-track" id="journeyTrack">
+                        <!-- PANEL 1 -->
+                        <div class="journey-panel" data-accent="#6366f1" data-index="0">
+                            <span class="journey-year">2020</span>
+                            <div class="journey-content">
+                                <div class="journey-tag" style="--accent: #6366f1;">BITS Pilani, 2019-23</div>
+                                <h2 class="journey-title">College, but make it productive</h2>
+                                <p class="journey-desc">5 internships. Founded x3ntech, shipped 5+ apps — Neo Vault hit 250K downloads. BITSAT 320. Lights &amp; sound head for the fashion club. CEL associate. Volleyball. Minor in Finance.</p>
+                                <div class="journey-stat">
+                                    <span class="journey-stat-number" data-target="5" data-suffix="">0</span>
+                                    <span class="journey-stat-label">internships</span>
+                                </div>
+                            </div>
+                            <div class="journey-visual">
+                                <div class="journey-card">
+                                    <div class="journey-card-inner">
+                                        <div class="journey-card-icon">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
+                                        </div>
+                                        <div class="journey-card-stat">250K</div>
+                                        <div class="journey-card-label">App Downloads (Organic)</div>
+                                        <div class="journey-card-bar"><div class="journey-card-bar-fill" style="--fill: 85%; --accent: #6366f1;"></div></div>
+                                        <div class="journey-card-row">
+                                            <span>4.6 &#9733; avg rating</span>
+                                            <span>5+ apps shipped</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL 2 -->
+                        <div class="journey-panel" data-accent="#8b5cf6" data-index="1">
+                            <span class="journey-year">2021</span>
+                            <div class="journey-content">
+                                <div class="journey-tag" style="--accent: #8b5cf6;">CTO at 20</div>
+                                <h2 class="journey-title">Built a health platform from scratch</h2>
+                                <p class="journey-desc">Hcare -- online homeopathy consultancy. Designed the app, built the backend, scaled to 20K+ users. First time owning every technical decision.</p>
+                                <div class="journey-stat">
+                                    <span class="journey-stat-number" data-target="20" data-suffix="K+">0</span>
+                                    <span class="journey-stat-label">users</span>
+                                </div>
+                            </div>
+                            <div class="journey-visual">
+                                <div class="journey-card">
+                                    <div class="journey-card-inner">
+                                        <div class="journey-card-icon">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                        </div>
+                                        <div class="journey-card-stat">20K+</div>
+                                        <div class="journey-card-label">Active Users</div>
+                                        <div class="journey-card-bar"><div class="journey-card-bar-fill" style="--fill: 65%; --accent: #8b5cf6;"></div></div>
+                                        <div class="journey-card-row">
+                                            <span>Full-stack</span>
+                                            <span>Android + Firebase</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL 3 -->
+                        <div class="journey-panel" data-accent="#06b6d4" data-index="2">
+                            <span class="journey-year">2023</span>
+                            <div class="journey-content">
+                                <div class="journey-tag" style="--accent: #06b6d4;">Wishlink</div>
+                                <h2 class="journey-title">Joined at seed, built the product</h2>
+                                <p class="journey-desc">Turned down a ~66 LPA offer to join Wishlink at $3M seed instead. Built the creator commerce platform end-to-end for two years. Top 1% bracket at the company. They went on to raise a $17.5M Series B after I left.</p>
+                                <div class="journey-stat">
+                                    <span class="journey-stat-number" data-target="40" data-suffix="K+">0</span>
+                                    <span class="journey-stat-label">creators on platform</span>
+                                </div>
+                            </div>
+                            <div class="journey-visual">
+                                <div class="journey-card">
+                                    <div class="journey-card-inner">
+                                        <div class="journey-card-icon">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                                        </div>
+                                        <div class="journey-card-stat">$17.5M</div>
+                                        <div class="journey-card-label">Series B Raised</div>
+                                        <div class="journey-card-bar"><div class="journey-card-bar-fill" style="--fill: 92%; --accent: #06b6d4;"></div></div>
+                                        <div class="journey-card-row">
+                                            <span>Seed &rarr; Series B</span>
+                                            <span>40K+ creators</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL 4 -->
+                        <div class="journey-panel" data-accent="#ec4899" data-index="3">
+                            <span class="journey-year">2025</span>
+                            <div class="journey-content">
+                                <div class="journey-tag" style="--accent: #ec4899;">Sydney, AU</div>
+                                <h2 class="journey-title">Moved to Sydney at 24</h2>
+                                <p class="journey-desc">Packed up and moved to Sydney. 5x pay jump. Founding engineer at Coreflow AI -- one of the fastest growing AI startups, 20M+ users.</p>
+                                <div class="journey-stat">
+                                    <span class="journey-stat-number" data-target="20" data-suffix="M+">0</span>
+                                    <span class="journey-stat-label">users</span>
+                                </div>
+                            </div>
+                            <div class="journey-visual">
+                                <div class="journey-card">
+                                    <div class="journey-card-inner">
+                                        <div class="journey-card-icon">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                        </div>
+                                        <div class="journey-card-stat">20M+</div>
+                                        <div class="journey-card-label">Users on Platform</div>
+                                        <div class="journey-card-bar"><div class="journey-card-bar-fill" style="--fill: 75%; --accent: #ec4899;"></div></div>
+                                        <div class="journey-card-row">
+                                            <span>5x pay jump</span>
+                                            <span>Founding Engineer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ PROJECTS ============ -->
+            <section class="projects" id="projects">
+                <div class="projects-inner">
+                    <div class="project-showcase" data-color="#6366f1">
+                        <div class="project-bg-accent"></div>
+                        <div class="project-info">
+                            <h2 class="project-name">Neo Vault</h2>
+                            <p class="project-line">Privacy-first vault app. Grew entirely through organic search and word of mouth on the Play Store.</p>
+                            <div class="project-meta">
+                                <span>Android</span>
+                                <span>Java</span>
+                                <span>250K+ Downloads</span>
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <div class="project-preview-placeholder" style="--accent: #6366f1;">
+                                <span>Screenshot</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase" data-color="#8b5cf6">
+                        <div class="project-bg-accent"></div>
+                        <div class="project-info">
+                            <h2 class="project-name">Nox</h2>
+                            <p class="project-line">Browser extension for dark/light mode control. Ships on Chrome, Firefox, Safari, and Edge.</p>
+                            <div class="project-meta">
+                                <span>TypeScript</span>
+                                <span>WXT</span>
+                                <span>4 Browser Stores</span>
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <div class="project-preview-placeholder" style="--accent: #8b5cf6;">
+                                <span>Screenshot</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase" data-color="#06b6d4">
+                        <div class="project-bg-accent"></div>
+                        <div class="project-info">
+                            <h2 class="project-name">Tripsy</h2>
+                            <p class="project-line">Paste an Instagram Reel, get every travel spot mentioned. AI extracts locations automatically.</p>
+                            <div class="project-meta">
+                                <span>Python</span>
+                                <span>AI</span>
+                                <span>Travel Tech</span>
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <div class="project-preview-placeholder" style="--accent: #06b6d4;">
+                                <span>Screenshot</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ PERSONAL ============ -->
+            <section class="personal" id="personal">
+                <div class="personal-inner">
+                    <h2 class="personal-heading">When I'm not coding...</h2>
+                    <div class="personal-grid">
+                        <div class="personal-item personal-item--large">
+                            <span class="personal-emoji">&#127929;</span>
+                            <h3>Piano</h3>
+                            <p>Somewhere between Chopin and lo-fi beats. It's how I decompress after a day of debugging.</p>
+                        </div>
+                        <div class="personal-item">
+                            <span class="personal-emoji">&#9992;&#65039;</span>
+                            <h3>Travel</h3>
+                            <p>Mumbai to Sydney with plenty of stops in between. Every new city changes how I think about design.</p>
+                        </div>
+                        <div class="personal-item">
+                            <span class="personal-emoji">&#128200;</span>
+                            <h3>Finance</h3>
+                            <p>Minored in Finance at BITS. I write about markets and money because numbers tell stories too.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ INSTAGRAM ============ -->
+            <section class="insta-section" id="instaGrid">
+                <div class="insta-inner">
+                    <div class="insta-header">
+                        <h2 class="insta-heading">Life outside code</h2>
+                        <p class="insta-sub">17 trips last year. Piano, street photography, and the occasional strong opinion.</p>
+                        <a href="https://instagram.com/adioof" target="_blank" rel="noopener noreferrer" class="insta-link">@adioof &rarr;</a>
+                    </div>
+                    <div class="insta-embed-single">
+                        <iframe src="https://www.instagram.com/adioof/embed/" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ LINKEDIN ============ -->
+            <section class="linkedin-section" id="linkedin">
+                <div class="linkedin-inner">
+                    <div class="linkedin-header">
+                        <h2 class="linkedin-heading">Writing on LinkedIn</h2>
+                        <p class="linkedin-sub">500K+ impressions on tech, AI, and finance.</p>
+                        <a href="https://linkedin.com/in/adioof" target="_blank" rel="noopener noreferrer" class="linkedin-link">linkedin.com/in/adioof &rarr;</a>
+                    </div>
+                    <div class="linkedin-posts">
+                        <div class="linkedin-post">
+                            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7346877046251298816?collapsed=1" height="264" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                        </div>
+                        <div class="linkedin-post">
+                            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7345749414142951425?collapsed=1" height="264" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ WRITING ============ -->
+            <section class="writing" id="writing">
+                <div class="writing-inner">
+                    <h2 class="writing-heading">Recent Writing</h2>
+                    <div class="writing-links">
+                        <a href="https://dev.to/adioof" target="_blank" rel="noopener noreferrer" class="writing-link">
+                            <span class="writing-link-title">I Woke Up to 14 PRs I Didn't Write</span>
+                            <span class="writing-link-arrow">&rarr;</span>
+                        </a>
+                        <a href="https://dev.to/adioof" target="_blank" rel="noopener noreferrer" class="writing-link">
+                            <span class="writing-link-title">The L in LLM Stands for Lying</span>
+                            <span class="writing-link-arrow">&rarr;</span>
+                        </a>
+                        <a href="https://dev.to/adioof" target="_blank" rel="noopener noreferrer" class="writing-link">
+                            <span class="writing-link-title">Read more on dev.to/adioof</span>
+                            <span class="writing-link-arrow">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ CONTACT ============ -->
+            <section class="contact" id="contact">
+                <div class="contact-gradient"></div>
+                <div class="contact-inner">
+                    <h2 class="contact-heading">Say hi.</h2>
+                    <a href="mailto:adityaagarwal990@gmail.com" class="contact-email">adityaagarwal990@gmail.com</a>
+<div class="contact-socials">
+                        <a href="https://linkedin.com/in/adioof" target="_blank" rel="noopener noreferrer" class="contact-social" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/adityaagarwal16" target="_blank" rel="noopener noreferrer" class="contact-social" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://instagram.com/adioof" target="_blank" rel="noopener noreferrer" class="contact-social" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://dev.to/adioof" target="_blank" rel="noopener noreferrer" class="contact-social" aria-label="DEV">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6v4.36h.58c.37 0 .67-.08.87-.25.21-.18.31-.5.31-.95v-1.93c0-.49-.12-.83-.34-1zm13.37-7.55H3.2C1.99 2.5 1 3.48 1 4.7v14.6c0 1.22.99 2.2 2.2 2.2h17.6c1.21 0 2.2-.98 2.2-2.2V4.7c0-1.22-.99-2.2-2.21-2.2zM9.71 14.35c0 .93-.41 1.87-1.65 1.87H5.71V7.87h2.5c1.08 0 1.5.88 1.5 1.78v4.7zm5.03-4.73H12.5v1.93h1.57v1.36H12.5v1.93h2.24V16.2H11.7c-.5 0-.92-.37-.92-.87V8.75c0-.52.37-.88.87-.88h3.09v1.75zm4.85 5.3c-.59 1.4-1.38 1.56-2.14 1.56-.78 0-1.6-.48-2.15-1.28l1.16-.94c.21.34.55.64.99.64.35 0 .6-.15.78-.48.18-.32.18-.96.18-1.73V7.87h1.75v6.36c0 .26-.02.55-.07.69h-.5z"/></svg>
+                            <span>DEV</span>
+                        </a>
+                    </div>
+                    <p class="contact-location">Sydney, Australia</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
