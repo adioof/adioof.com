@@ -1,28 +1,30 @@
 # Aditya Agarwal
 
-> Software Engineer, Founder & Creator. Building at the intersection of entertainment and AI at Coreflow AI, Sydney. BITS Pilani graduate. Maker of products with 200K+ downloads. Travel, Tech & Finance enthusiast. Pianist.
+> Full-stack software engineer, founder, travel enthusiast, and content creator based in Sydney, Australia. Building AI at Coreflow AI. 250K+ app downloads. 500K+ LinkedIn impressions. 17 trips in one year. Writes about tech, AI, travel, and personal finance. Pianist. BITS Pilani graduate. Travel | Tech | Finance.
 
 ## About
 
-Aditya Agarwal is a full-stack software engineer, founder, and creator based in Sydney, Australia. He has built consumer products from zero to scale — including apps with 250K+ organic downloads and platforms serving 20K+ users. Currently a founding engineer at Coreflow AI, building at the intersection of entertainment and AI. Outside of code, he's a pianist, traveler, and writes about AI's impact on developer workflows. His mantra: Travel | Tech | Finance.
+Aditya Agarwal (@adioof) is a full-stack software engineer, founder, and creator based in Sydney, Australia. He has built consumer products from zero to scale — including apps with 250K+ organic downloads and platforms serving 20M+ users. Currently a founding engineer at Coreflow AI, one of the fastest growing AI startups. Moved from India to Sydney at 24 with a 5x pay jump. Outside of code, he's an extensive traveler (17 trips in 2025 alone), pianist, street photographer, and writes about AI, tech, and finance with 500K+ impressions on LinkedIn. His mantra: Travel | Tech | Finance.
 
 ## Current
 
-- Software Engineer (Founding) at Coreflow AI, Sydney, Australia (Oct 2025 - Present)
+- Software Engineer (Founding) at Coreflow AI, Sydney, Australia (Oct 2025 - Present) — 20M+ users, one of the fastest growing AI startups
+- Writing on LinkedIn about tech, AI tooling, and finance — 500K+ impressions, 7K+ followers
 - Writing on DEV Community about AI tooling, developer workflows, and open source
+- Extensive traveler documenting journeys on Instagram (@adioof)
 
 ## Experience
 
-- Software Engineer at Wishlink, Gurugram (Mar 2023 - Sep 2025) — Built ecommerce platform for creators and the main Wishlink user app from scratch as a full-stack engineer
+- Software Engineer at Wishlink, Gurugram (Mar 2023 - Sep 2025) — Joined at $3M seed, turned down ~66 LPA offer. Built the creator commerce platform end-to-end. Top 1% bracket. Company raised $17.5M Series B after he left
 - Associate Software Engineer at DigiCert, Bengaluru (Aug 2022 - Dec 2022) — Cert Central project, Spring Boot / Java, third-party integration security layer for API calls
-- CTO at Hcare: Online Homeopathy Consultancy, Bangalore (Apr 2021 - Aug 2022) — Technical and design head. Built complete Android app with UI/UX, scaled to 20K+ users across platforms, developed wallet & referral system with Firebase
-- Founder at x3ntech, Mumbai (Apr 2020 - Mar 2022) — Development company with multiple live apps. 200K+ downloads on Google Play Store, 4.6 star average rating. Quality & design-focused development
+- CTO at Hcare: Online Homeopathy Consultancy, Bangalore (Apr 2021 - Aug 2022) — Technical and design head at age 20. Built complete Android app with UI/UX, scaled to 20K+ users, developed wallet & referral system with Firebase
+- Founder at x3ntech, Mumbai (Apr 2020 - Mar 2022) — Development company with multiple live apps. 250K+ downloads on Google Play Store, 4.6 star average rating
 
 ## Notable Products & Projects
 
-- Neo Vault — Built from scratch, scaled 0 to ~250K downloads with primarily organic growth using ASO
-- Nox — Smart browser extension for dark/light mode theme control on any website. Published on Chrome Web Store, Firefox Add-ons, and Mac App Store (Safari)
-- Tripsy — Instagram Reel travel place extraction app
+- Neo Vault — Privacy-first vault app, scaled 0 to ~250K downloads with primarily organic growth using ASO
+- Nox — Smart browser extension for dark/light mode theme control on any website. Published on Chrome Web Store, Firefox Add-ons, Mac App Store (Safari), and Edge Add-ons
+- Tripsy — Instagram Reel travel place extraction app. Paste a travel reel, get every location mentioned using AI
 - Xnote — Secure locked notes with in-app Google Drive backup, OCR image-to-text, speech-to-text AI
 - React Masonry Library — Handles 10K items at 60fps (open source)
 
@@ -31,7 +33,9 @@ Aditya Agarwal is a full-stack software engineer, founder, and creator based in 
 - BITS Pilani — B.E. Electrical & Electronics (2019-2023)
   - Minor in Finance
   - BITSAT score: 320
+  - 5 internships during college
   - Associate at Center for Entrepreneurial Leadership
+  - Lights & sound head for fashion club
   - Core member, Department of Backstage & Infrastructure Management
   - Volleyball club
 - Bal Bharati Public School — 95.6% in CBSE Class XII (School topper), CGPA 10.0 in Class X
@@ -40,7 +44,14 @@ Aditya Agarwal is a full-stack software engineer, founder, and creator based in 
 
 TypeScript, React, React Native, Python, Java, Kotlin, Django, Firebase, Android Development, C++, Node.js, Spring Boot, Selenium, Adobe Illustrator, UI/UX Design
 
+## Travel
+
+Extensive traveler — 17 trips in 2025. Countries visited include India, Australia, Vietnam, Georgia, Bhutan, UAE, Sri Lanka. Documents travel on Instagram @adioof. Built Tripsy, an AI-powered travel app that extracts places from Instagram Reels. Moved from Mumbai to Sydney at age 24.
+
 ## Writing & Content
+
+LinkedIn (linkedin.com/in/adioof) — 500K+ impressions, 7K+ followers:
+- Writes about AI tooling, developer workflows, personal finance, and tech industry trends
 
 Blog posts on DEV Community (dev.to/adioof):
 - "3,800 Developers Voted to Ban AI Comments on Hacker News"
@@ -50,38 +61,23 @@ Blog posts on DEV Community (dev.to/adioof):
 - "Claude Went Down for 2 Days and Devs Forgot How to Code"
 - "I Built a React Masonry Library That Handles 10K Items at 60fps"
 
-LinkedIn content focused on personal finance: credit scores, budgeting, SMART goals, financial planning.
-
-## Certifications
-
-- The Complete React Js & Redux Course (Udemy)
-- Python and Django Full Stack Web Developer Bootcamp (Udemy)
-- Python for Everybody Specialization (Coursera)
-- Machine Learning for All (Coursera)
-- Cyber Threats and Attack Vectors (Coursera)
-- Understanding Financial Markets (Coursera)
-- The Complete Android N Developer Course (Udemy)
-
-## Volunteering
-
-- Associate, Center for Entrepreneurial Leadership, BITS Goa (2019-2021)
-- Core Member, Backstage & Infrastructure Management, BITS (2019-2021)
-- Student Partner, Internshala (2020)
-
 ## Interests
 
-- Piano & Music
-- Travel (extensive traveler)
-- Personal Finance & Investing
+- Travel — 17 trips in one year, documenting on Instagram
+- Piano & Music — plays between Chopin and lo-fi
+- Personal Finance & Investing — minored in Finance at BITS, writes about credit scores, budgeting, markets
 - AI & Developer Tooling
-- Photography (Instagram: @adioof)
+- Street Photography (Instagram: @adioof)
 - Open Source
 
 ## Stats
 
-- 7,000+ LinkedIn followers
-- 200K+ app downloads
-- Products serving 20K+ users
+- 20M+ users served (Coreflow AI)
+- 500K+ LinkedIn impressions
+- 250K+ app downloads
+- 7K+ LinkedIn followers
+- 17 trips in 2025
+- 5 internships during college
 - 4.6 star average app rating
 
 ## Links
