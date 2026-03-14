@@ -254,6 +254,18 @@ body.smooth-scroll .scroll-content {
     background: #030308;
 }
 
+/* Top/bottom blend gradients */
+.journey-sticky::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom, var(--bg) 0%, transparent 12%),
+        linear-gradient(to top, var(--bg) 0%, transparent 12%);
+}
+
 /* Noise texture overlay */
 .journey-sticky::after {
     content: '';
