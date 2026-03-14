@@ -45,7 +45,7 @@
         contactLocation: $('.contact-location'),
         instaHeader: $('.insta-header'),
         instaEmbed: $('.insta-embed-single'),
-        linkedinHeader: $('.linkedin-header'),
+        linkedinTop: $('.linkedin-top'),
         linkedinPosts: $$('.linkedin-post'),
     };
 
@@ -722,7 +722,7 @@
         dom.writingLinks.forEach((link, i) => { link.dataset.delay = i * 120; observer.observe(link); });
         if (dom.instaHeader) observer.observe(dom.instaHeader);
         if (dom.instaEmbed) { dom.instaEmbed.dataset.delay = 200; observer.observe(dom.instaEmbed); }
-        if (dom.linkedinHeader) observer.observe(dom.linkedinHeader);
+        if (dom.linkedinTop) observer.observe(dom.linkedinTop);
         dom.linkedinPosts.forEach((post, i) => { post.dataset.delay = i * 150; observer.observe(post); });
         if (dom.contactHeading) observer.observe(dom.contactHeading);
         if (dom.contactEmail) observer.observe(dom.contactEmail);
