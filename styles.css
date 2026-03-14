@@ -391,16 +391,17 @@ body.smooth-scroll .scroll-content {
     position: absolute;
     inset: -20px;
     z-index: 0;
-    opacity: 0.12;
+    opacity: 0.5;
     background-size: cover;
     background-position: center;
-    filter: blur(8px) brightness(0.6);
-    transition: opacity 0.8s ease;
+    filter: brightness(0.35);
+    transition: opacity 0.8s ease, filter 0.8s ease;
     pointer-events: none;
 }
 
 .journey-panel.active .journey-panel-bg {
-    opacity: 0.25;
+    opacity: 0.7;
+    filter: brightness(0.3);
 }
 
 /* --- Connector line --- */
@@ -755,6 +756,8 @@ body.smooth-scroll .scroll-content {
 .journey-card-row {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.3);
     letter-spacing: 0.02em;
@@ -1441,8 +1444,8 @@ body.smooth-scroll .scroll-content {
     }
 
     .journey-panel-bg {
-        opacity: 0.2 !important;
-        filter: blur(40px);
+        opacity: 0.6 !important;
+        filter: brightness(0.3);
     }
 
     .journey-panel .journey-quote {

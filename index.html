@@ -121,9 +121,8 @@
                     <!-- Panel indicator dots -->
                     <div class="journey-dots" id="journeyDots">
                         <button class="journey-dot active" data-panel="0"><span>2020</span></button>
-                        <button class="journey-dot" data-panel="1"><span>2021</span></button>
-                        <button class="journey-dot" data-panel="2"><span>2023</span></button>
-                        <button class="journey-dot" data-panel="3"><span>2025</span></button>
+                        <button class="journey-dot" data-panel="1"><span>2023</span></button>
+                        <button class="journey-dot" data-panel="2"><span>2025</span></button>
                     </div>
 
                     <!-- Background glow that transitions per panel -->
@@ -134,10 +133,9 @@
                         <svg class="journey-connector-svg" preserveAspectRatio="none" viewBox="0 0 1000 20">
                             <line class="journey-connector-bg" x1="0" y1="10" x2="1000" y2="10"/>
                             <line class="journey-connector-line" id="connectorLine" x1="0" y1="10" x2="1000" y2="10"/>
-                            <circle class="journey-connector-dot" cx="125" cy="10" r="6" data-panel="0"/>
-                            <circle class="journey-connector-dot" cx="375" cy="10" r="6" data-panel="1"/>
-                            <circle class="journey-connector-dot" cx="625" cy="10" r="6" data-panel="2"/>
-                            <circle class="journey-connector-dot" cx="875" cy="10" r="6" data-panel="3"/>
+                            <circle class="journey-connector-dot" cx="167" cy="10" r="6" data-panel="0"/>
+                            <circle class="journey-connector-dot" cx="500" cy="10" r="6" data-panel="1"/>
+                            <circle class="journey-connector-dot" cx="833" cy="10" r="6" data-panel="2"/>
                         </svg>
                     </div>
 
@@ -192,50 +190,8 @@
                             </div>
                         </div>
 
-                        <!-- PANEL 2: Hcare -->
-                        <div class="journey-panel" data-accent="#8b5cf6" data-index="1">
-                            <div class="journey-panel-bg" style="background-image: url('img/india.jpg');"></div>
-                            <span class="journey-year">2021</span>
-                            <div class="journey-content">
-                                <div class="journey-tag" style="--accent: #8b5cf6;">CTO at 20</div>
-                                <h2 class="journey-title">Built a health platform from scratch</h2>
-                                <p class="journey-quote">First time owning every decision.</p>
-                                <p class="journey-desc">Hcare -- online homeopathy consultancy. Designed the app, built the backend, scaled to 20K+ users across platforms.</p>
-                                <div class="journey-stats">
-                                    <div class="journey-stat journey-stat--mini">
-                                        <span class="journey-stat-number" data-target="20" data-suffix="K+">0</span>
-                                        <span class="journey-stat-label">users</span>
-                                    </div>
-                                    <div class="journey-stat journey-stat--mini">
-                                        <span class="journey-stat-number" data-target="1" data-suffix="">0</span>
-                                        <span class="journey-stat-label">man army</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="journey-visual">
-                                <div class="journey-card">
-                                    <div class="journey-card-inner">
-                                        <div class="journey-card-icon">
-                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                                <path class="heartbeat-line" d="M4 32h14l6 18 8-36 6 18h22" stroke-dasharray="200" stroke-dashoffset="200">
-                                                    <animate attributeName="stroke-dashoffset" from="200" to="0" dur="1.5s" fill="freeze" begin="0.2s"/>
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="journey-card-stat">20K+</div>
-                                        <div class="journey-card-label">Active Users</div>
-                                        <div class="journey-card-bar"><div class="journey-card-bar-fill" style="--fill: 65%; --accent: #8b5cf6;"></div></div>
-                                        <div class="journey-card-row">
-                                            <span>Full-stack</span>
-                                            <span>Android + Firebase</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PANEL 3: Wishlink -->
-                        <div class="journey-panel" data-accent="#06b6d4" data-index="2">
+                        <!-- PANEL 2: Wishlink -->
+                        <div class="journey-panel" data-accent="#06b6d4" data-index="1">
                             <div class="journey-panel-bg" style="background-image: url('img/startup.jpg');"></div>
                             <span class="journey-year">2023</span>
                             <div class="journey-content">
@@ -258,20 +214,7 @@
                                 <div class="journey-card">
                                     <div class="journey-card-inner">
                                         <div class="journey-card-icon">
-                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                                                <rect x="8" y="44" width="12" height="0" rx="2" fill="currentColor" opacity="0.3">
-                                                    <animate attributeName="height" from="0" to="12" dur="0.6s" fill="freeze" begin="0.2s"/>
-                                                    <animate attributeName="y" from="44" to="32" dur="0.6s" fill="freeze" begin="0.2s"/>
-                                                </rect>
-                                                <rect x="26" y="44" width="12" height="0" rx="2" fill="currentColor" opacity="0.5">
-                                                    <animate attributeName="height" from="0" to="24" dur="0.6s" fill="freeze" begin="0.5s"/>
-                                                    <animate attributeName="y" from="44" to="20" dur="0.6s" fill="freeze" begin="0.5s"/>
-                                                </rect>
-                                                <rect x="44" y="44" width="12" height="0" rx="2" fill="currentColor" opacity="0.8">
-                                                    <animate attributeName="height" from="0" to="36" dur="0.6s" fill="freeze" begin="0.8s"/>
-                                                    <animate attributeName="y" from="44" to="8" dur="0.6s" fill="freeze" begin="0.8s"/>
-                                                </rect>
-                                            </svg>
+                                            <img src="img/wishlink.svg" alt="Wishlink" style="width: 120px; height: auto; opacity: 0.9;">
                                         </div>
                                         <div class="journey-card-stat">$17.5M</div>
                                         <div class="journey-card-label">Series B Raised</div>
@@ -286,7 +229,7 @@
                         </div>
 
                         <!-- PANEL 4: Sydney -->
-                        <div class="journey-panel" data-accent="#ec4899" data-index="3">
+                        <div class="journey-panel" data-accent="#ec4899" data-index="2">
                             <div class="journey-panel-bg" style="background-image: url('img/sydney.jpg');"></div>
                             <span class="journey-year">2025</span>
                             <div class="journey-content">
@@ -305,16 +248,7 @@
                                 <div class="journey-card">
                                     <div class="journey-card-inner">
                                         <div class="journey-card-icon">
-                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                                                <circle cx="32" cy="32" r="26"/>
-                                                <ellipse cx="32" cy="32" rx="10" ry="26">
-                                                    <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="20s" repeatCount="indefinite"/>
-                                                </ellipse>
-                                                <line x1="6" y1="32" x2="58" y2="32"/>
-                                                <ellipse cx="32" cy="32" rx="18" ry="26" opacity="0.3">
-                                                    <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="-360 32 32" dur="30s" repeatCount="indefinite"/>
-                                                </ellipse>
-                                            </svg>
+                                            <img src="img/coreflow.png" alt="Coreflow AI" style="width: 64px; height: 64px; border-radius: 12px;">
                                         </div>
                                         <div class="journey-card-stat">20M+</div>
                                         <div class="journey-card-label">Users on Platform</div>
